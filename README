@@ -12,6 +12,6 @@ Have a look at baum.WeatherExample1.scala in /test/scala which models a classica
 sbt test-only baum.WeatherExample1
 
 There are a couple of features missing, most of the are part of the c 4.5 version of the algorithm: 
-- integrate confidence score 
-- support for numerical values
-- support for missing values 
+- Integrate confidence score 
+- Support for numerical values
+- Support for missing values 
