@@ -1,6 +1,6 @@
 This is a simple implementation of the decision tree algorithm from Ross Quinlan for Scala 
 
-The reason behind this little project is that all other implementations and libraries of the id3/c 4.5 algorithms i have worked with, have the limitation that it is not possible to access to the generated tree structure itself and they dont  work with a real object oriented domain model. So far this little prototype solves at least these 2 problems.
+The reason for this little project is that all other implementations and libraries of the id3/c 4.5 algorithms I have worked with, have the limitation that it is not possible to access with themthe generated tree structure. Also none of them are able to operate on domain model instead of tabular data. So far this little prototype solves at least these 2 problems.
 
 If you want to build the project, make sure sbt is installed, then execute the commands:  
 git clone git://github.com/mkleen/baum.git
@@ -8,7 +8,8 @@ cd baum
 sbt update
 sbt compile
  
-Have a look at baum.WeatherExample1.scala in /test/scala which models a classical example from the book "Datamining - Practical Machine Learning Tools and Techniques" from  I. Witten and Eibe Frank. You can run the the example with the sbt command "sbt test-only baum.WeatherExample1"
+Have a look at baum.WeatherExample1.scala in /test/scala which models a classical example from the book "Datamining - Practical Machine Learning Tools and Techniques" from  I. Witten and Eibe Frank. You can run the the example with the sbt following sbt command:
+sbt test-only baum.WeatherExample1
 
 There are a couple of features missing, most of the are part of the c 4.5 version of the algorithm: 
 - integrate confidence score 
