@@ -1,0 +1,6 @@
+.idea/
+target/
+out/
+lib_managed/
+src_managed/
+project/boot/
