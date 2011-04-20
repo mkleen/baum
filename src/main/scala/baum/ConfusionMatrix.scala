@@ -13,8 +13,8 @@ case class ConfusionMatrix(tp: Int, fp: Int, tn: Int, fn: Int) {
 	*/
 	def error():Double = {	
 	    val zscore 			=  1.6448536283610324 // 0.95, normal distribution inverse cumulative probability
-        val all 			=  tp + fp + tn + fn
-        val observedError 	=  (fp + fn)/all  
+        val all 			=  tp.doubleValue + fp.doubleValue + tn.doubleValue + fn.doubleValue
+        val observedError 	=  (fp.doubleValue + fn.doubleValue)/all  
 
         if (observedError == 0) return 0
 

@@ -26,6 +26,8 @@ sealed trait Id3Tree[T] {
 
 object Id3Tree {
 	
+	val threshold = 0.7
+	
 	def apply[T](instances: Set[T],attributes: Set[Property[T]], target: Property[T]): Id3Tree[T] = {
 		make[T](instances, attributes, target)
 	}
@@ -36,13 +38,13 @@ object Id3Tree {
 		 		case SplitSucess (value, confusionMatrix, _)	
 					=>	val splits			= instances.partition(value._2) 
 						val newAttributes 	= attributes - value
-						val error		 	= confusionMatrix.error
-						val positive 		= if(error < 0.7) Some(rec(true, splits._1, newAttributes)) else None 
-						val negative 		= if(error < 0.7) Some(rec(true, splits._2, newAttributes)) else None  
+						val (pos, neg)  	= if(confusionMatrix.error < threshold) {
+							 					(Some(rec(true, splits._1, newAttributes)),Some(rec(true, splits._2, newAttributes))) }
+											  else (None, None) 		
 						Id3Node[T](
 							flag				= flag,
-							positive			= positive, 
-							negative			= negative, 
+							positive			= pos, 
+							negative			= neg, 
 							value 				= value._2, 
 							confusionMatrix 	= confusionMatrix,
 							label 				= value._1	
