@@ -1,3 +1,3 @@
 package object baum {
-	type Property[T] 			= (String, T => Boolean)
+//	type Property[T] 			= (String, T => Boolean)
 }

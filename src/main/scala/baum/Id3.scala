@@ -16,11 +16,11 @@ object Id3 {
 	
 	def calculateGain[T](instances: Iterable[T],target:Property[T])(attribute: Property[T]): SplitResult[T] = {
 		// split instances where the attribute is present or not
-		val (positive, negative) = instances partition attribute._2
+		val (positive, negative) = instances.partition(attribute.value)
 		// count tp/fp if the attribiute is present and the target is present
-		val (tp, fp)			= count(positive partition target._2)
+		val (tp, fp)			= count(positive partition target.value)
 		// count tn/fn where the attribute is missing and the target is missing
-		val (fn, tn)			= count(negative partition target._2)	
+		val (fn, tn)			= count(negative partition target.value)	
 		// calculate total information gain 
 	    val gain 				= entropy(tp, fp, fn, tn) - informationGain(tp, fp, fn, tn)
 		gain match {

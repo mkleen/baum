@@ -23,20 +23,20 @@ class WeatherExample1 extends Specification {
 	)
 	
 	// define the attributes
-	val attributes = Set(
-						("Outlook: Sunny" , { day: Day => day.outlook == Sunny }), 
-						("Outlook: Overcast", { day: Day => day.outlook == Overcast }), 
-						("Outlook: Rainy", 	{ day: Day => day.outlook == Rainy 	}), 
-						("Temperature: Hot", { day: Day => day.temperature == Hot }), 
-						("Temperature: Mild", { day: Day => day.temperature == Mild }), 
-						("Temperature: Cool", { day: Day => day.temperature == Cool }),
-						("Humidity: High", { day: Day => day.humidity == High 	}),
-						("Humidity: Normal",{ day: Day => day.humidity == Normal }),
-						("Windy", { day: Day => day.windy }) 
+	val attributes = Set[Property[Day]](
+						Attribute("Outlook: Sunny" , { day: Day => day.outlook == Sunny }), 
+						Attribute("Outlook: Overcast", { day: Day => day.outlook == Overcast }), 
+						Attribute("Outlook: Rainy", 	{ day: Day => day.outlook == Rainy 	}), 
+						Attribute("Temperature: Hot", { day: Day => day.temperature == Hot }), 
+						Attribute("Temperature: Mild", { day: Day => day.temperature == Mild }), 
+						Attribute("Temperature: Cool", { day: Day => day.temperature == Cool }),
+						Attribute("Humidity: High", { day: Day => day.humidity == High 	}),
+						Attribute("Humidity: Normal",{ day: Day => day.humidity == Normal }),
+						Attribute("Windy", { day: Day => day.windy }) 
 					)
 	
 	// define the targets					
-	val target 		= ("Play", {day: Day => day.play})
+	val target 		= Target("Play", {day: Day => day.play})
 	
 	val tree = Id3Tree(data, attributes, target) 
 	
