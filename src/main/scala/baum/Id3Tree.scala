@@ -25,7 +25,7 @@ sealed trait Id3Tree[T] {
 
 object Id3Tree {
 	
-	val threshold = 0.7
+	val threshold = 0.7 // threshold for the maximum error 
 	
 	def apply[T](instances: Set[T],attributes: Set[Property[T]], target: Property[T]): Id3Tree[T] = {
 		make[T](instances, attributes, target)
@@ -40,8 +40,7 @@ object Id3Tree {
 						val (posNode, negNode)  	= if(confusionMatrix.error < threshold) {(
 															Some(rec(true, positives, newAttributes)),
 															Some(rec(true, negatives, newAttributes))
-											  			)}
-											 else (None, None) 		
+											  			)}	else (None, None) 		
 						Id3Node[T](
 							flag				= flag,
 							positive			= posNode, 
@@ -56,6 +55,10 @@ object Id3Tree {
 	}
 }
 
+/**
+ * Unbalanced binary Tree 
+ *
+**/ 
 case class Id3Leaf[T](
 	flag: Boolean, 
 	property: Property[T]

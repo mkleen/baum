@@ -7,14 +7,13 @@ import scala.math._
 object Id3 {
 		
 	def split[T](instances: Iterable[T],attributes: Iterable[Property[T]],target:Property[T]): SplitResult[T] = {
-		// calculate a split for each attribute acording to the target
-		val splits  = attributes map calculateGain(instances, target) _ 
+		// calculate a split for each attribute acording to the target 
+		val toSplit = calculateSplit(instances, target) _
 		// find the one with the highest gain
-		val sorted 	= splits.toList sortWith{ _.gain >= _.gain} 
-		sorted head
+		attributes.map(toSplit).toList.sortWith{ _.gain >= _.gain} head
 	}
 	
-	def calculateGain[T](instances: Iterable[T],target:Property[T])(attribute: Property[T]): SplitResult[T] = {
+	def calculateSplit[T](instances: Iterable[T],target:Property[T])(attribute: Property[T]): SplitResult[T] = {
 		// split instances where the attribute is present or not
 		val (positive, negative) = instances.partition(attribute.value)
 		// count tp/fp if the attribiute is present and the target is present
@@ -59,7 +58,7 @@ object Id3 {
 	    ((tp + fp) / sum) * (aFactor - bFactor) + ((fn + tn) / sum) * (cFactor - dFactor)
 	  }
 
-	  def log2(x: Double): Double = log(x) / log(2)	
+	 private def log2(x: Double): Double = log(x) / log(2)	
 	
 	 private def count[T](x:(Iterable[T], Iterable[T])) = (x._1.size, x._2.size)
 	
