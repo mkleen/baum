@@ -56,7 +56,7 @@ object Id3Tree {
 }
 
 /**
- * Unbalanced binary Tree 
+ * binary Tree 
  *
 **/ 
 case class Id3Leaf[T](

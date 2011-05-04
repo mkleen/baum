@@ -31,7 +31,7 @@ object Id3 {
 	/*
 	 * Shannons entropy http://en.wikipedia.org/wiki/Information_entropy
 	 */
-	def entropy[T](tp: Double, fp: Double, fn: Double, tn: Double): Double = {
+	def entropy(tp: Double, fp: Double, fn: Double, tn: Double): Double = {
 	    val sumPos 	= tp + fn
 	    val sumNeg 	= fp + tn
 	    val sum 	= sumPos + sumNeg
@@ -48,7 +48,7 @@ object Id3 {
 	 /*
 	  * Information gain http://en.wikipedia.org/wiki/Information_gain
 	  */
-	 def informationGain[T](tp: Double, fp: Double, fn: Double, tn: Double): Double = {
+	 def informationGain(tp: Double, fp: Double, fn: Double, tn: Double): Double = {
 	    val aFactor = if (tp != 0) -(tp / (tp + fp)) * log2(tp / (tp + fp)) else 0.0
 	    val bFactor = if (fp != 0) 	(fp / (tp + fp)) * log2(fp / (tp + fp)) else 0.0
 	    val cFactor = if (fn != 0) -(fn / (fn + tn)) * log2(fn / (fn + tn)) else 0.0
