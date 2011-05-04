@@ -1,7 +1,7 @@
 package baum
 
 import scala.math._ 
-/*
+/**
  * Splits datasets acording to http://en.wikipedia.org/wiki/ID3_algorithm
  */
 object Id3 {
@@ -28,7 +28,7 @@ object Id3 {
 		}
 	}
 		
-	/*
+	/**
 	 * Shannons entropy http://en.wikipedia.org/wiki/Information_entropy
 	 */
 	def entropy(tp: Double, fp: Double, fn: Double, tn: Double): Double = {
@@ -45,7 +45,7 @@ object Id3 {
 	    positivePart + negativePart
 	  }
 
-	 /*
+	 /**
 	  * Information gain http://en.wikipedia.org/wiki/Information_gain
 	  */
 	 def informationGain(tp: Double, fp: Double, fn: Double, tn: Double): Double = {

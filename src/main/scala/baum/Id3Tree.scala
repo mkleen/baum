@@ -54,11 +54,7 @@ object Id3Tree {
 		rec(true, allInstances, allAttributes)
 	}
 }
-
-/**
- * binary Tree 
- *
-**/ 
+ 
 case class Id3Leaf[T](
 	flag: Boolean, 
 	property: Property[T]

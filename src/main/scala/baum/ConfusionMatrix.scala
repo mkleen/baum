@@ -4,7 +4,8 @@ import scala.math._
 
 case class ConfusionMatrix(tp: Int, fp: Int, tn: Int, fn: Int) {	
 	   
-   /* This method derives the estimated error by counting, using the number of true positive, false positive, 
+   /**
+	* This method derives the estimated error by counting, using the number of true positive, false positive, 
 	* true negatives positive examples in the training set. Given the number of example instances 
 	* it calculates which rules lie above a given threshold in 95% of all cases.
 	* Estimated errors rate e-hat(e,n,z) = (e + z^2/2n + z * sqrt(e/n - e^2/n + z^2/4n^2))/(1 + z^2/n)
