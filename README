@@ -11,7 +11,7 @@ sbt compile
 Have a look at src/test/scala/baum/WeatherExample1.scala which models a classical example from the book "Datamining - Practical Machine Learning Tools and Techniques" from  I. Witten and Eibe Frank. You can run the the example with the  following command:
 sbt test-only baum.WeatherExample1
 
-There are a couple of features missing, most of the are part of them c 4.5 version of the algorithm: 
+There are a couple of features missing, most of them are part of the c 4.5 version of the algorithm: 
 - Integrate confidence score 
 - Support for numerical values
 - Support for missing values 
